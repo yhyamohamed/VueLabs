@@ -56,12 +56,7 @@ export default {
       showAdmins: false,
       entities: [
         { name: "yaya", salary: 9000, address: "Alexandria", type: "Admin" },
-        {
-          name: "john due",
-          salary: 9000,
-          address: "Alexandria",
-          type: "student",
-        },
+        {name: "john due",salary: 9000,address: "Alexandria",type: "student"},
       ],
     };
   },
