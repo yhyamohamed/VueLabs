@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="col-8 offset-2">
     <table class="table table-hover table-striped">
       <thead>
@@ -10,12 +10,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="key,index in studentsArray" :key="index">
+        <tr v-for="(key, index) in studentsArray" :key="index">
           <th scope="row">{{ key.name }}</th>
           <td>{{ key.salary }}</td>
           <td>{{ key.address }}</td>
           <td>
-            <button class="btn btn-sm btn-danger" @click="deleteEntry(index)">
+            <button class="btn btn-sm btn-danger" @click="deleteEntry(key.id)">
               Delete
             </button>
           </td>
@@ -24,15 +24,22 @@
     </table>
   </div>
 </template>
+
 <script>
 export default {
-  name: "StudentComponent",
+  name: "students",
   props: ["studentsArray"],
-  methods: {
-    deleteEntry(ind) {
-       this.$emit("deletingEntity", ind);
-    },
+  setup(props, context) {
+    const deleteEntry = (id) => {
+      context.emit("deleteEntry", id);
+    };
+    
+  
+    return {
+      deleteEntry,
+    };
   },
 };
 </script>
-<style lang=""></style>
+
+<style lang="scss" scoped></style>
